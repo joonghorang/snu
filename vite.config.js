@@ -6,5 +6,14 @@ export default defineConfig({
     // 예를 들어, 저장소 이름이 'my-project'라면 다음과 같이 설정합니다.
     base: "/snu/",
     outDir: 'docs',
+    manifest: true, // Enable the generation of the manifest file
+    rollupOptions: {
+      output: {
+        // Use `./` as the asset file prefix
+        assetFileNames: `[name].[hash].[ext]`,
+        chunkFileNames: `[name].[hash].js`,
+        entryFileNames: `[name].[hash].js`,
+      }
+    }
   },
 });
