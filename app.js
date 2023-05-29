@@ -3,21 +3,21 @@ import axios from 'axios'; // http요청을 쉽게 할 수 있게 해주는 라�
 import cors from 'cors'; // cross origin 정책을 커스터마이징 할 수 있게 해주는 라이브러리 
 import path from 'path'; // 경로와 관련된 설정을 도와주는 라이브러리
 
-// import { fileURLToPath } from 'url';
-// import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express(); // app이라는 변수에 express프레임웤을 이용해서 초기화한후, 생성된 객체를 넣어주는 코드
 const PORT = 3000; // 포트를 상수로 3000번으로 설정합니다. 
 
-// app.use(express.static(path.join(__dirname, 'docs')));
+app.use(express.static(path.join(__dirname, 'docs')));
 app.use(express.json()); // josn이라는 형식을 쓸 수 있게 설정 
 app.use(cors()); // cors를 기본설정해서 주소가 같지 않아도 전부 통신 가능하도록 열어놓는 코드
 
 app.get('/', (req, res) => {
-  res.send('Hello World');
+  res.sendFile('/index.html');
 });
 
 app.post('/api/chat', async (req, res) => { // post방식으로 https://localhost:3000/api/chat이라는 주소로 요청을 받는 설정
