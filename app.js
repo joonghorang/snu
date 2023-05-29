@@ -12,11 +12,11 @@ import path from 'path'; // 경로와 관련된 설정을 도와주는 라이브
 const app = express(); // app이라는 변수에 express프레임웤을 이용해서 초기화한후, 생성된 객체를 넣어주는 코드
 const PORT = 3000; // 포트를 상수로 3000번으로 설정합니다. 
 
-app.use(express.static(path.join(__dirname, 'docs')));
+// app.use(express.static(path.join(__dirname, 'docs')));
 app.use(express.json()); // josn이라는 형식을 쓸 수 있게 설정 
 app.use(cors()); // cors를 기본설정해서 주소가 같지 않아도 전부 통신 가능하도록 열어놓는 코드
 
-app.get('/', () => {
+app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
