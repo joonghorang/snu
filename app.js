@@ -17,7 +17,7 @@ app.use(express.json()); // josn이라는 형식을 쓸 수 있게 설정
 app.use(cors()); // cors를 기본설정해서 주소가 같지 않아도 전부 통신 가능하도록 열어놓는 코드
 
 app.get('/', (req, res) => {
-  res.sendFile('/index.html');
+  res.render('/docs/index.html');
 });
 
 app.post('/api/chat', async (req, res) => { // post방식으로 https://localhost:3000/api/chat이라는 주소로 요청을 받는 설정
